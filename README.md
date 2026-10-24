@@ -3,14 +3,9 @@ Multi-distribution toolchain manager (Debian & Ubuntu) for deploying Lemon-OS de
 
 ## Quick Start
 ```bash
-git clone [https://github.com/YOUR_USERNAME/lemtool.git](https://github.com/YOUR_USERNAME/lemtool.git)
+git clone [https://github.com/themangodeveloper-eng/lemtool.git](https://github.com/themangodeveloper-eng/lemtool.git)
 cd lemtool
+chmod +x lemon-tool.sh
 ./lemon-tool.sh debian
 proot-distro login debian
-### Step 3: Add a `.gitignore`
-Keep sensitive local configuration keys out of version control:
-```bash
-cat << 'EOF' > .gitignore
-.config/
-*.key
-*.tar.gz
+

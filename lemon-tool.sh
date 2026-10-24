@@ -56,7 +56,7 @@ EON
 mkdir -p "$ROOTFS_DIR/usr/local/bin"
 
 # ------------------------------------------------------------------------------
-# Embed LLI (Local Link Interface) with clean absolute /bin/bash header
+# Embed LLI (Local Link Interface) with clean absolute /bin/bash header & valid syntax
 # ------------------------------------------------------------------------------
 cat << 'EON' > "$ROOTFS_DIR/usr/local/bin/lli"
 #!/bin/bash
@@ -106,7 +106,7 @@ esac
 EON
 
 # ------------------------------------------------------------------------------
-# Embed SLI (Secure Link Interface - AI) with clean absolute /bin/bash header
+# Embed SLI (Secure Link Interface) with clean absolute /bin/bash header & valid syntax
 # ------------------------------------------------------------------------------
 cat << 'EON' > "$ROOTFS_DIR/usr/local/bin/sli"
 #!/bin/bash
@@ -129,7 +129,7 @@ if [ "$COMMAND" == "ai-in" ]; then
     
     curl -s -X POST "$GEM_URL" \
          -H "Content-Type: application/json" \
-         -d "{\"contents\": [{\"parts\": [{\"text\": \"$PROMPT\"}]}]}" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data['candidates'][0]['content']['parts'][0]['text'])" 2>/dev/null
+         -d "{\"contents\": [{\"parts\": [{\"text\": \"$PROMPT\"}]}]}" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data['candidates'][0]['content']['parts']['0']['text'])" 2>/dev/null
 else
     echo "Usage: sli ai-in \"<prompt>\""
 fi
